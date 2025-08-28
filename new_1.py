@@ -74,6 +74,18 @@ Content-Type: text/html
 </html>
 """
 
+def save_wifi_credentials(ssid, password):
+    """
+    Save WiFi credentials to a file.
+    
+    :param ssid: The WiFi network SSID
+    :param password: The WiFi network password
+    """
+    credentials = {'ssid': ssid, 'password': password}
+    with open('wifi_credentials.json', 'w') as f:
+        json.dump(credentials, f)
+    print("WiFi credentials saved to file.")
+
 def connect_to_wifi(ssid, password, max_attempts=10, delay=2):
     """
     Attempts to connect to a WiFi network with the given SSID and password.
@@ -101,6 +113,7 @@ def connect_to_wifi(ssid, password, max_attempts=10, delay=2):
         # Check if the device is connected
         if status == 2:  # 2 is 'connected'
             print("Successfully connected to WiFi!")
+            save_wifi_credentials(ssid, password)  # Save credentials on successful connection
             return True
         
         # Handle different statuses

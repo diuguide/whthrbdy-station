@@ -19,7 +19,7 @@ def main():
     # Define DHT22 pin
     dht_pin = 15  # Replace with the GPIO pin connected to the DHT22 sensor
 
-    sample_ip = "192.168.1.110"
+    sample_ip = ""
     port = "8080"
     station_id=001
 
@@ -53,3 +53,4 @@ def main():
 
 # Run the main function
 main()
+
